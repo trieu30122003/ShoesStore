@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: datn
+  http:
+    encoding: UTF-8
+    charset: UTF-8
+    enable: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/shoe
+    username: root
+    password: vuchitrieu
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format-sql: true
+    show-sql: true
+springdoc:
+  swagger-ui:
+    config-url: /swagger-ui/index.html
+  api-docs:
+    path: /api
+
+server:
+  port: 8080
