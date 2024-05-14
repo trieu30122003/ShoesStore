@@ -12,12 +12,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/chatlieu")
+@RequestMapping("/api/chat-lieu")
 public class ChatLieuController {
     @Autowired
     BaseService<ChatLieuDto, ChatLieu> baseService;
 
     @GetMapping
+    @Operation(summary = "getAll")
     public ResponseEntity<Page<ChatLieu>> getAllChatLieus(@RequestParam(value = "page", defaultValue = "0") int page,
                                                           @RequestParam(value = "size", defaultValue = "5") int size) {
         return ResponseEntity.ok(baseService.getAll(page, size));
@@ -60,6 +61,7 @@ public class ChatLieuController {
     }
 
     @GetMapping("/search")
+    @Operation(summary = "tìm kiếm theo tên")
     public ResponseEntity<Page<ChatLieu>> search(@RequestParam(value = "name") String name,
                                  @RequestParam(value = "page", defaultValue = "0") int page,
                                  @RequestParam(value = "size", defaultValue = "5") int size){
