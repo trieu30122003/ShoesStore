@@ -21,26 +21,26 @@ public class CoGiayCotroller {
 
     @GetMapping
     @Operation(summary = "getAll")
-    public ResponseEntity<Page<CoGiay>> getAllChatLieus(@RequestParam(value = "page", defaultValue = "0") int page,
+    public ResponseEntity<Page<CoGiay>> getAllCoGiays(@RequestParam(value = "page", defaultValue = "0") int page,
                                                           @RequestParam(value = "size", defaultValue = "5") int size) {
         return ResponseEntity.ok(baseService.getAll(page, size));
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "lấy ra 1 cổ giày theo id")
-    public CoGiayDto getChatLieuById(@PathVariable int id) {
+    public CoGiayDto getCoGiayById(@PathVariable int id) {
         return baseService.getOne(id);
     }
 
     @PostMapping
     @Operation(summary = "thêm 1 cổ giày")
-    public ResponseEntity<CoGiayDto> createChatLieu(@RequestBody CoGiayDto coGiayDto) {
+    public ResponseEntity<CoGiayDto> createCoGiay(@RequestBody CoGiayDto coGiayDto) {
         return ResponseEntity.ok(baseService.save(coGiayDto));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "update theo id")
-    public ResponseEntity<CoGiayDto> updateChatLieu(@PathVariable int id, @RequestBody CoGiayDto coGiayDto) {
+    public ResponseEntity<CoGiayDto> updateCoGiay(@PathVariable int id, @RequestBody CoGiayDto coGiayDto) {
         return ResponseEntity.ok(baseService.update(coGiayDto,id));
     }
 

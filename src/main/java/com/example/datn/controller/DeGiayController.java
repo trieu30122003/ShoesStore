@@ -21,26 +21,26 @@ public class DeGiayController {
 
     @GetMapping
     @Operation(summary = "getAll")
-    public ResponseEntity<Page<DeGiay>> getAllChatLieus(@RequestParam(value = "page", defaultValue = "0") int page,
+    public ResponseEntity<Page<DeGiay>> getAllDeGiays(@RequestParam(value = "page", defaultValue = "0") int page,
                                                         @RequestParam(value = "size", defaultValue = "5") int size) {
         return ResponseEntity.ok(baseService.getAll(page, size));
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "lấy ra 1 đế giày theo id")
-    public DeGiayDto getChatLieuById(@PathVariable int id) {
+    public DeGiayDto getDeGiayById(@PathVariable int id) {
         return baseService.getOne(id);
     }
 
     @PostMapping
     @Operation(summary = "thêm 1 đế giày")
-    public ResponseEntity<DeGiayDto> createChatLieu(@RequestBody DeGiayDto deGiayDto) {
+    public ResponseEntity<DeGiayDto> createDeGiay(@RequestBody DeGiayDto deGiayDto) {
         return ResponseEntity.ok(baseService.save(deGiayDto));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "update theo id")
-    public ResponseEntity<DeGiayDto> updateChatLieu(@PathVariable int id, @RequestBody DeGiayDto deGiayDto) {
+    public ResponseEntity<DeGiayDto> updateDeGiay(@PathVariable int id, @RequestBody DeGiayDto deGiayDto) {
         return ResponseEntity.ok(baseService.update(deGiayDto,id));
     }
 

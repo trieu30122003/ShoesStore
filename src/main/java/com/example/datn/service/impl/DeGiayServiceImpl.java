@@ -50,9 +50,10 @@ public class DeGiayServiceImpl implements BaseService<DeGiayDto, DeGiay> {
     @Override
     public DeGiayDto update(DeGiayDto deGiayDto, int id) {
         DeGiayDto returnValue = new DeGiayDto();
-        if (deGiayRepository.findByMa(deGiayDto.getMa())!=null){
-            throw new DeGiayException("Mã đế giày đã tồn tại!");
-        }else if (deGiayRepository.findById(id).get()==null){
+//        if (deGiayRepository.findByMa(deGiayDto.getMa())!=null){
+//            throw new DeGiayException("Mã đế giày đã tồn tại!");
+//        }else
+            if (deGiayRepository.findById(id).get()==null){
             throw new DeGiayException("Không tồn tại id là: "+id);
         }
         deGiayRepository.update(deGiayDto,id);
