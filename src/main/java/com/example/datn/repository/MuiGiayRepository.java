@@ -1,8 +1,6 @@
 package com.example.datn.repository;
 
-import com.example.datn.dto.MauSacDto;
 import com.example.datn.dto.MuiGiayDto;
-import com.example.datn.entity.MauSac;
 import com.example.datn.entity.MuiGiay;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

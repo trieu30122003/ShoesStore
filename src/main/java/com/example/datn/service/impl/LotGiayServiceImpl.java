@@ -29,15 +29,16 @@ public class LotGiayServiceImpl implements BaseService<LotGiayDto, LotGiay> {
     @Override
     public LotGiayDto getOne(int id) {
         LotGiayDto returnValue = new LotGiayDto();
-        LotGiay lotGiay = lotGiayRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Lót giày không tồn tại với id là: "+id));
-        BeanUtils.copyProperties(lotGiay,returnValue);
+        LotGiay lotGiay = lotGiayRepository.findById(id)
+                                           .orElseThrow(() -> new EntityNotFoundException("Lót giày không tồn tại với id là: " + id));
+        BeanUtils.copyProperties(lotGiay, returnValue);
         return returnValue;
     }
 
     @Override
     public LotGiayDto save(LotGiayDto lotGiayDto) {
-        if (lotGiayRepository.findByMa(lotGiayDto.getMa())!=null){
-            throw new LotGiayException("Mã "+lotGiayDto.getMa()+" đã tồn tại trong hệ thống");
+        if (lotGiayRepository.findByMa(lotGiayDto.getMa()) != null) {
+            throw new LotGiayException("Mã " + lotGiayDto.getMa() + " đã tồn tại trong hệ thống");
         }
         ModelMapper modelMapper = new ModelMapper();
         LotGiay lotGiay = modelMapper.map(lotGiayDto, LotGiay.class);
@@ -49,14 +50,15 @@ public class LotGiayServiceImpl implements BaseService<LotGiayDto, LotGiay> {
 
     @Override
     public LotGiayDto update(LotGiayDto lotGiayDto, int id) {
-        if (lotGiayRepository.findById(lotGiayDto.getId())==null){
-            throw new LotGiayException("Id "+lotGiayDto.getId()+" chưa tồn tại trong hệ thống");
+        if (lotGiayRepository.findById(lotGiayDto.getId()) == null) {
+            throw new LotGiayException("Id " + lotGiayDto.getId() + " chưa tồn tại trong hệ thống");
         }
         lotGiayRepository.update(lotGiayDto, id);
 
         LotGiayDto returnValue = new LotGiayDto();
-        LotGiay lotGiay = lotGiayRepository.findById(id).get();
-        BeanUtils.copyProperties(lotGiay,returnValue);
+        LotGiay lotGiay = lotGiayRepository.findById(id)
+                                           .get();
+        BeanUtils.copyProperties(lotGiay, returnValue);
         return returnValue;
     }
 
@@ -67,8 +69,8 @@ public class LotGiayServiceImpl implements BaseService<LotGiayDto, LotGiay> {
 
     @Override
     public Page<LotGiay> search(String name, int page, int size) {
-        Pageable pageable = PageRequest.of(page,size);
-        Page<LotGiay> returnValue = lotGiayRepository.findByTen(name,pageable);
+        Pageable pageable = PageRequest.of(page, size);
+        Page<LotGiay> returnValue = lotGiayRepository.findByTen(name, pageable);
         return returnValue;
     }
 }

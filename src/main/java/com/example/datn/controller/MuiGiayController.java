@@ -1,8 +1,6 @@
 package com.example.datn.controller;
 
-import com.example.datn.dto.LotGiayDto;
 import com.example.datn.dto.MuiGiayDto;
-import com.example.datn.entity.LotGiay;
 import com.example.datn.entity.MuiGiay;
 import com.example.datn.request.OperationStatusModel;
 import com.example.datn.request.RequestOperationStatus;

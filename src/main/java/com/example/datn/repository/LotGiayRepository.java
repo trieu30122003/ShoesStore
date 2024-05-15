@@ -1,9 +1,7 @@
 package com.example.datn.repository;
 
 import com.example.datn.dto.LotGiayDto;
-import com.example.datn.dto.MuiGiayDto;
 import com.example.datn.entity.LotGiay;
-import com.example.datn.entity.MuiGiay;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

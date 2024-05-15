@@ -1,9 +1,7 @@
 package com.example.datn.controller;
 
 import com.example.datn.dto.LotGiayDto;
-import com.example.datn.dto.MauSacDto;
 import com.example.datn.entity.LotGiay;
-import com.example.datn.entity.MauSac;
 import com.example.datn.request.OperationStatusModel;
 import com.example.datn.request.RequestOperationStatus;
 import com.example.datn.service.BaseService;
@@ -22,7 +20,7 @@ public class LotGiayController {
     @GetMapping
     @Operation(summary = "getAll")
     public ResponseEntity<Page<LotGiay>> getAllLotGiays(@RequestParam(value = "page", defaultValue = "0") int page,
-                                                      @RequestParam(value = "size", defaultValue = "5") int size) {
+                                                        @RequestParam(value = "size", defaultValue = "5") int size) {
         return ResponseEntity.ok(baseService.getAll(page, size));
     }
 
@@ -67,8 +65,8 @@ public class LotGiayController {
     @GetMapping("/search")
     @Operation(summary = "tìm kiếm theo tên")
     public ResponseEntity<Page<LotGiay>> search(@RequestParam(value = "name") String name,
-                                               @RequestParam(value = "page", defaultValue = "0") int page,
-                                               @RequestParam(value = "size", defaultValue = "5") int size) {
+                                                @RequestParam(value = "page", defaultValue = "0") int page,
+                                                @RequestParam(value = "size", defaultValue = "5") int size) {
         return ResponseEntity.ok(baseService.search(name, page, size));
     }
 }
