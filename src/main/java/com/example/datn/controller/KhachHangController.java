@@ -37,13 +37,13 @@ public class KhachHangController {
 
     @PostMapping
     @Operation(summary = "thêm 1 khách hàng")
-    public ResponseEntity<KhachHangDto> createKichThuoc(@RequestBody KhachHangDto khachHangDto) {
+    public ResponseEntity<KhachHangDto> create(@RequestBody KhachHangDto khachHangDto) {
         return ResponseEntity.ok(khachHangService.save(khachHangDto));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "update theo id")
-    public ResponseEntity<KhachHangDto> updateKichThuoc(@PathVariable int id, @RequestBody KhachHangDto khachHangDto) {
+    public ResponseEntity<KhachHangDto> update(@PathVariable int id, @RequestBody KhachHangDto khachHangDto) {
         return ResponseEntity.ok(khachHangService.update(khachHangDto,id));
     }
 
