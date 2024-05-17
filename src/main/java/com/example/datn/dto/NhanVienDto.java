@@ -2,6 +2,7 @@ package com.example.datn.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,6 +29,7 @@ public class NhanVienDto {
     @Email(message = "email invalidate")
     private String email;
     @NotBlank(message = "sdt is not mandatory")
+    @Pattern(regexp = "/d")
     private String sdt;
     private String encryptedPassword;
     private int trangThai;
