@@ -4,6 +4,7 @@ import com.example.datn.dto.HashTagDetailDto;
 import com.example.datn.entity.HashTagChiTiet;
 import com.example.datn.service.BaseService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +31,13 @@ public class HashTagDetailController {
 
     @PostMapping
     @Operation(summary = "thêm")
-    public ResponseEntity<HashTagDetailDto> create(@RequestBody HashTagDetailDto hashTagDetailDto){
+    public ResponseEntity<HashTagDetailDto> create(@Valid @RequestBody HashTagDetailDto hashTagDetailDto){
         return ResponseEntity.ok(baseService.save(hashTagDetailDto));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "cập nhật")
-    public ResponseEntity<HashTagDetailDto> update(@RequestBody HashTagDetailDto hashTagDetailDto, @PathVariable int id){
+    public ResponseEntity<HashTagDetailDto> update(@Valid @RequestBody HashTagDetailDto hashTagDetailDto, @PathVariable int id){
         return ResponseEntity.ok(baseService.update(hashTagDetailDto, id));
     }
 }

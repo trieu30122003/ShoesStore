@@ -10,6 +10,7 @@ import com.example.datn.request.RequestOperationStatus;
 import com.example.datn.service.BaseService;
 import com.example.datn.service.BienTheGiayService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -36,14 +37,14 @@ public class BienTheGiayController {
 
     @PostMapping
     @Operation(summary = "thêm 1 biến thể")
-    public ResponseEntity<BienTheGiayDto> create(@RequestBody BienTheGiayDto bienTheGiayDto){
+    public ResponseEntity<BienTheGiayDto> create(@Valid @RequestBody BienTheGiayDto bienTheGiayDto){
         return ResponseEntity.ok(baseService.save(bienTheGiayDto));
     }
 
 
     @PutMapping("/{id}")
     @Operation(summary = "update theo id")
-    public ResponseEntity<BienTheGiayDto> updateChatLieu(@PathVariable int id, @RequestBody BienTheGiayDto bienTheGiayDto) {
+    public ResponseEntity<BienTheGiayDto> updateChatLieu(@Valid @PathVariable int id, @RequestBody BienTheGiayDto bienTheGiayDto) {
         return ResponseEntity.ok(baseService.update(bienTheGiayDto,id));
     }
 

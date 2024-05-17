@@ -6,6 +6,7 @@ import com.example.datn.request.OperationStatusModel;
 import com.example.datn.request.RequestOperationStatus;
 import com.example.datn.service.BaseService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -33,13 +34,13 @@ public class MauSacController {
 
     @PostMapping
     @Operation(summary = "thêm 1 màu sắc")
-    public ResponseEntity<MauSacDto> createMauSac(@RequestBody MauSacDto mauSacDto) {
+    public ResponseEntity<MauSacDto> createMauSac(@Valid @RequestBody MauSacDto mauSacDto) {
         return ResponseEntity.ok(baseService.save(mauSacDto));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "update theo id")
-    public ResponseEntity<MauSacDto> updateMauSac(@PathVariable int id, @RequestBody MauSacDto mauSacDto) {
+    public ResponseEntity<MauSacDto> updateMauSac(@Valid @PathVariable int id, @RequestBody MauSacDto mauSacDto) {
         return ResponseEntity.ok(baseService.update(mauSacDto, id));
     }
 

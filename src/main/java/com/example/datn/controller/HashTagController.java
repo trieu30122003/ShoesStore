@@ -8,6 +8,7 @@ import com.example.datn.request.OperationStatusModel;
 import com.example.datn.request.RequestOperationStatus;
 import com.example.datn.service.BaseService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -34,13 +35,13 @@ public class HashTagController {
 
     @PostMapping
     @Operation(summary = "thêm 1 hashTag")
-    public ResponseEntity<HashTagDto> create(@RequestBody HashTagDto hashTagDto) {
+    public ResponseEntity<HashTagDto> create(@Valid @RequestBody HashTagDto hashTagDto) {
         return ResponseEntity.ok(baseService.save(hashTagDto));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "update theo id")
-    public ResponseEntity<HashTagDto> update(@PathVariable int id, @RequestBody HashTagDto hashTagDto) {
+    public ResponseEntity<HashTagDto> update(@Valid @PathVariable int id, @RequestBody HashTagDto hashTagDto) {
         return ResponseEntity.ok(baseService.update(hashTagDto,id));
     }
 

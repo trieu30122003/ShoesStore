@@ -6,6 +6,7 @@ import com.example.datn.request.OperationStatusModel;
 import com.example.datn.request.RequestOperationStatus;
 import com.example.datn.service.BaseService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -32,13 +33,13 @@ public class ThuongHieuController {
 
     @PostMapping
     @Operation(summary = "thêm 1 thương hiệu")
-    public ResponseEntity<ThuongHieuDto> create(@RequestBody ThuongHieuDto thuongHieuDto) {
+    public ResponseEntity<ThuongHieuDto> create(@Valid @RequestBody ThuongHieuDto thuongHieuDto) {
         return ResponseEntity.ok(baseService.save(thuongHieuDto));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "update theo id")
-    public ResponseEntity<ThuongHieuDto> update(@PathVariable int id, @RequestBody ThuongHieuDto thuongHieuDto) {
+    public ResponseEntity<ThuongHieuDto> update(@Valid @PathVariable int id, @RequestBody ThuongHieuDto thuongHieuDto) {
         return ResponseEntity.ok(baseService.update(thuongHieuDto, id));
     }
 

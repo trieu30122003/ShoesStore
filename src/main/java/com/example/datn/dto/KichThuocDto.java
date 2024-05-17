@@ -1,5 +1,6 @@
 package com.example.datn.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,9 +9,13 @@ import lombok.Setter;
 
 public class KichThuocDto {
     private int id;
+    @NotBlank(message = "Ma is not mandatory")
     private String ma;
+    @NotBlank(message = "ten is not mandatory")
     private String ten;
+    @NotBlank(message = "chieuRong is not mandatory")
     private int chieuRong;
+    @NotBlank(message = "chieuDai is not mandatory")
     private int chieuDai;
     private String moTa;
     private int trangThai;

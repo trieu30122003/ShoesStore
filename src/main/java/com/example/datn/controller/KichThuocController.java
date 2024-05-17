@@ -6,6 +6,7 @@ import com.example.datn.request.OperationStatusModel;
 import com.example.datn.request.RequestOperationStatus;
 import com.example.datn.service.BaseService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -32,13 +33,13 @@ public class KichThuocController {
 
     @PostMapping
     @Operation(summary = "thêm 1 kích thước")
-    public ResponseEntity<KichThuocDto> createKichThuoc(@RequestBody KichThuocDto kichThuocDto) {
+    public ResponseEntity<KichThuocDto> createKichThuoc(@Valid @RequestBody KichThuocDto kichThuocDto) {
         return ResponseEntity.ok(baseService.save(kichThuocDto));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "update theo id")
-    public ResponseEntity<KichThuocDto> updateKichThuoc(@PathVariable int id, @RequestBody KichThuocDto kichThuocDto) {
+    public ResponseEntity<KichThuocDto> updateKichThuoc(@Valid @PathVariable int id, @RequestBody KichThuocDto kichThuocDto) {
         return ResponseEntity.ok(baseService.update(kichThuocDto,id));
     }
 

@@ -8,6 +8,7 @@ import com.example.datn.request.OperationStatusModel;
 import com.example.datn.request.RequestOperationStatus;
 import com.example.datn.service.BaseService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -34,13 +35,13 @@ public class DeGiayController {
 
     @PostMapping
     @Operation(summary = "thêm 1 đế giày")
-    public ResponseEntity<DeGiayDto> createDeGiay(@RequestBody DeGiayDto deGiayDto) {
+    public ResponseEntity<DeGiayDto> createDeGiay(@Valid @RequestBody DeGiayDto deGiayDto) {
         return ResponseEntity.ok(baseService.save(deGiayDto));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "update theo id")
-    public ResponseEntity<DeGiayDto> updateDeGiay(@PathVariable int id, @RequestBody DeGiayDto deGiayDto) {
+    public ResponseEntity<DeGiayDto> updateDeGiay(@Valid @PathVariable int id, @RequestBody DeGiayDto deGiayDto) {
         return ResponseEntity.ok(baseService.update(deGiayDto,id));
     }
 
