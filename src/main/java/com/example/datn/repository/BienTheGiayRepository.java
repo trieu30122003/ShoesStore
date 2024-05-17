@@ -3,6 +3,7 @@ package com.example.datn.repository;
 import com.example.datn.dto.BienTheGiayDto;
 import com.example.datn.dto.ChatLieuDto;
 import com.example.datn.entity.BienTheGiay;
+import com.example.datn.filter.FilterBienThe;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -29,4 +30,13 @@ public interface BienTheGiayRepository extends JpaRepository<BienTheGiay, Intege
             "b.giay = :#{#bienTheGiayDto.giay}," +
             "b.trangThai = :#{#bienTheGiayDto.trangThai} where b.id = :id")
     void update(BienTheGiayDto bienTheGiayDto, int id);
+
+    @Query(value = "select b from BienTheGiay b where " +
+            "(:#{#filterBienThe.giaBanMin} IS NULL OR :#{#filterBienThe.giaBanMax} IS NULL OR b.giaBan BETWEEN :#{#filterBienThe.giaBanMin} and :#{#filterBienThe.giaBanMax}) and " +
+            "(:#{#filterBienThe.trangThai} IS NULL OR :#{#filterBienThe.trangThai}='' OR b.trangThai = :#{#filterBienThe.trangThai}) and " +
+            "(:#{#filterBienThe.kichThuocMin.chieuDai} IS NULL OR :#{#filterBienThe.kichThuocMax.chieuDai} IS NULL OR b.kichThuoc.chieuDai BETWEEN :#{#filterBienThe.kichThuocMin.chieuDai} and :#{#filterBienThe.kichThuocMax.chieuDai}) and" +
+            "(:#{#filterBienThe.mauSac.ten} IS NULL OR :#{#filterBienThe.mauSac.ten}='' OR lower(b.mauSac.ten) like concat('%',lower(:#{#filterBienThe.mauSac.ten}),'%')) and" +
+            "(:#{#filterBienThe.giay.ten} IS NULL OR :#{#filterBienThe.giay.ten}='' OR lower(b.giay.ten) like concat('%',lower(:#{#filterBienThe.giay.ten}),'%'))"
+    )
+    Page<BienTheGiay> filterBienThe(FilterBienThe filterBienThe, Pageable pageable);
 }

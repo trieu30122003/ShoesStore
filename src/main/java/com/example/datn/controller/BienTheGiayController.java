@@ -4,9 +4,11 @@ import com.example.datn.dto.BienTheGiayDto;
 import com.example.datn.dto.ChatLieuDto;
 import com.example.datn.entity.BienTheGiay;
 import com.example.datn.entity.ChatLieu;
+import com.example.datn.filter.FilterBienThe;
 import com.example.datn.request.OperationStatusModel;
 import com.example.datn.request.RequestOperationStatus;
 import com.example.datn.service.BaseService;
+import com.example.datn.service.BienTheGiayService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/bien-the-giay")
 public class BienTheGiayController {
     @Autowired
-    BaseService<BienTheGiayDto, BienTheGiay> baseService;
+    BienTheGiayService baseService;
 
     @GetMapping
     @Operation(summary = "lấy ra tất cả biến thể")
@@ -69,5 +71,11 @@ public class BienTheGiayController {
                                                  @RequestParam(value = "page", defaultValue = "0") int page,
                                                  @RequestParam(value = "size", defaultValue = "5") int size){
         return ResponseEntity.ok(baseService.search(name,page,size));
+    }
+
+    @GetMapping("/filter")
+    @Operation(summary = "filter test trong postman")
+    public ResponseEntity<Page<BienTheGiay>> filter(@RequestBody FilterBienThe filterBienThe,@RequestParam(value = "page",defaultValue = "0") int page,@RequestParam(value = "size",defaultValue = "5") int size){
+        return ResponseEntity.ok(baseService.filterBienThe(filterBienThe, page, size));
     }
 }

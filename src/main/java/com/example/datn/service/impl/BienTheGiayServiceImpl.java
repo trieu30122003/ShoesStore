@@ -3,8 +3,9 @@ package com.example.datn.service.impl;
 import com.example.datn.dto.BienTheGiayDto;
 import com.example.datn.entity.BienTheGiay;
 import com.example.datn.exception.BienTheGiayException;
+import com.example.datn.filter.FilterBienThe;
 import com.example.datn.repository.BienTheGiayRepository;
-import com.example.datn.service.BaseService;
+import com.example.datn.service.BienTheGiayService;
 import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
@@ -15,7 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BienTheGiayServiceImpl implements BaseService<BienTheGiayDto, BienTheGiay> {
+public class BienTheGiayServiceImpl implements BienTheGiayService {
 
     @Autowired
     BienTheGiayRepository bienTheGiayRepository;
@@ -30,15 +31,16 @@ public class BienTheGiayServiceImpl implements BaseService<BienTheGiayDto, BienT
     @Override
     public BienTheGiayDto getOne(int id) {
         BienTheGiayDto returnValue = new BienTheGiayDto();
-        BienTheGiay bienTheGiay= bienTheGiayRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Biến thể giày không tồn tại với id là: "+id));
+        BienTheGiay bienTheGiay = bienTheGiayRepository.findById(id)
+                                                       .orElseThrow(() -> new EntityNotFoundException("Biến thể giày không tồn tại với id là: " + id));
         BeanUtils.copyProperties(bienTheGiay, returnValue);
         return returnValue;
     }
 
     @Override
     public BienTheGiayDto save(BienTheGiayDto bienTheGiayDto) {
-        if (bienTheGiayRepository.findByMa(bienTheGiayDto.getMa())!=null){
-            throw new BienTheGiayException("Mã "+bienTheGiayDto.getMa()+" đã tồn tại trong hệ thống");
+        if (bienTheGiayRepository.findByMa(bienTheGiayDto.getMa()) != null) {
+            throw new BienTheGiayException("Mã " + bienTheGiayDto.getMa() + " đã tồn tại trong hệ thống");
         }
 
         ModelMapper modelMapper = new ModelMapper();
@@ -56,13 +58,14 @@ public class BienTheGiayServiceImpl implements BaseService<BienTheGiayDto, BienT
 
     @Override
     public BienTheGiayDto update(BienTheGiayDto bienTheGiayDto, int id) {
-        if (bienTheGiayRepository.findById(id)==null){
-            throw new BienTheGiayException("id "+id+" chưa có trong hệ thống");
+        if (bienTheGiayRepository.findById(id) == null) {
+            throw new BienTheGiayException("id " + id + " chưa có trong hệ thống");
         }
-        bienTheGiayRepository.update(bienTheGiayDto,id);
+        bienTheGiayRepository.update(bienTheGiayDto, id);
 
         BienTheGiayDto returnValue = new BienTheGiayDto();
-        BienTheGiay bienTheGiay = bienTheGiayRepository.findById(id).get();
+        BienTheGiay bienTheGiay = bienTheGiayRepository.findById(id)
+                                                       .get();
         BeanUtils.copyProperties(bienTheGiay, returnValue);
         return returnValue;
     }
@@ -76,6 +79,13 @@ public class BienTheGiayServiceImpl implements BaseService<BienTheGiayDto, BienT
     public Page<BienTheGiay> search(String name, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<BienTheGiay> returnValue = bienTheGiayRepository.findByGiay_Ten(name, pageable);
+        return returnValue;
+    }
+
+    @Override
+    public Page<BienTheGiay> filterBienThe(FilterBienThe filterBienThe, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<BienTheGiay> returnValue = bienTheGiayRepository.filterBienThe(filterBienThe, pageable);
         return returnValue;
     }
 }
