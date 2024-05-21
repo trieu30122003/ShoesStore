@@ -26,6 +26,9 @@ public class HoaDon implements Serializable {
     @Column(name = "id_hoa_don")
     private long id;
 
+    @Column(name = "ma_hoa_don")
+    private String ma;
+
     @ManyToOne
     @JoinColumn(name = "id_khach_hang")
     private KhachHang khachHang;

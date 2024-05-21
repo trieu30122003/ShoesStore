@@ -24,15 +24,15 @@ public class HoaDonChiTiet implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_hdct")
-    private long id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "id_hoa_don")
     private HoaDon hoaDon;
 
     @ManyToOne
-    @JoinColumn(name = "id_giay")
-    private Giay giay;
+    @JoinColumn(name = "id_bien_the_giay")
+    private BienTheGiay bienTheGiay;
 
     @Column(name = "so_luong")
     private Integer soLuong;
