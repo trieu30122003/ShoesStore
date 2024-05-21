@@ -38,14 +38,14 @@ public class BienTheGiayController {
 
     @PostMapping
     @Operation(summary = "thêm 1 biến thể")
-    public ResponseEntity<BienTheGiayDto> create(@Valid @RequestBody BienTheGiayDto bienTheGiayDto){
+    public ResponseEntity<?> create(@Valid @RequestBody BienTheGiayDto bienTheGiayDto){
         return ResponseEntity.ok(baseService.save(bienTheGiayDto));
     }
 
 
     @PutMapping("/{id}")
     @Operation(summary = "update theo id")
-    public ResponseEntity<BienTheGiayDto> updateChatLieu(@Valid @PathVariable int id, @RequestBody BienTheGiayDto bienTheGiayDto) {
+    public ResponseEntity<?> updateChatLieu(@Valid @PathVariable int id, @RequestBody BienTheGiayDto bienTheGiayDto) {
         return ResponseEntity.ok(baseService.update(bienTheGiayDto,id));
     }
 

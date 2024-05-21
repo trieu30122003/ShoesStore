@@ -20,7 +20,7 @@ public class HoaDonChiTietController {
     }
 
     @PostMapping
-    public ResponseEntity<HoaDonChiTietDto> save(HoaDonChiTietDto hoaDonChiTietDto){
+    public ResponseEntity<?> save(HoaDonChiTietDto hoaDonChiTietDto){
         return ResponseEntity.ok(hoaDonChiTietService.save(hoaDonChiTietDto));
     }
 }

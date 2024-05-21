@@ -17,10 +17,10 @@ public class BienTheGiayDto {
     @NotBlank(message = "Ma is not mandatory")
     private String ma;
 
-    @NotBlank(message = "giaBan is not mandatory")
+//    @NotBlank(message = "giaBan is not mandatory")
     private BigDecimal giaBan;
 
-    @NotBlank(message = "giaNhap is not mandatory")
+//    @NotBlank(message = "giaNhap is not mandatory")
     private BigDecimal giaNhap;
 
     @NotBlank(message = "hinhAnh is not mandatory")
@@ -32,7 +32,7 @@ public class BienTheGiayDto {
 
     private MauSac mauSac;
 
-    @NotBlank(message = "Giay is not mandatory")
+//    @NotBlank(message = "Giay is not mandatory")
     private Giay giay;
 
 }

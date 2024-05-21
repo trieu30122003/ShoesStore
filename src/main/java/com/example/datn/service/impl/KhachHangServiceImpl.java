@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -38,16 +39,16 @@ public class KhachHangServiceImpl implements KhachHangService {
     }
 
     @Override
-    public KhachHangDto save(KhachHangDto khachHangDto) {
+    public ResponseEntity save(KhachHangDto khachHangDto) {
         if (khachHangRepository.findByMa(khachHangDto.getMa())!=null){
-            throw new KhachHangException("Mã "+khachHangDto.getMa()+" đã tồn tại trong hệ thống");
+            ResponseEntity.badRequest().body("Mã "+khachHangDto.getMa()+" đã tồn tại trong hệ thống");
         }
         ModelMapper modelMapper = new ModelMapper();
         KhachHang khachHang = modelMapper.map(khachHangDto, KhachHang.class);
         KhachHang addkhachHang = khachHangRepository.save(khachHang);
         KhachHangDto returnValue = modelMapper.map(addkhachHang, KhachHangDto.class);
 
-        return returnValue;
+        return ResponseEntity.ok(returnValue);
     }
 
     @Override
@@ -56,16 +57,17 @@ public class KhachHangServiceImpl implements KhachHangService {
     }
 
     @Override
-    public KhachHangDto update(KhachHangDto khachHangDto, int id) {
+    public ResponseEntity update(KhachHangDto khachHangDto, int id) {
         if (khachHangRepository.findById(khachHangDto.getId())==null){
-            throw new KhachHangException("Id "+khachHangDto.getMa()+" không tồn tại trong hệ thống");
+//            throw new KhachHangException();
+            return ResponseEntity.badRequest().body("Id "+khachHangDto.getMa()+" không tồn tại trong hệ thống");
         }
         khachHangRepository.update(khachHangDto, id);
 
         KhachHangDto returnValue = new KhachHangDto();
         KhachHang khachHang = khachHangRepository.findById(id).get();
         BeanUtils.copyProperties(khachHang,returnValue);
-        return returnValue;
+        return ResponseEntity.ok(returnValue);
     }
 
     @Override

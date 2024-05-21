@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -48,9 +49,10 @@ public class BienTheGiayServiceImpl implements BienTheGiayService {
     }
 
     @Override
-    public BienTheGiayDto save(BienTheGiayDto bienTheGiayDto) {
+    public ResponseEntity save(BienTheGiayDto bienTheGiayDto) {
         if (bienTheGiayRepository.findByMa(bienTheGiayDto.getMa()) != null) {
-            throw new BienTheGiayException("Mã " + bienTheGiayDto.getMa() + " đã tồn tại trong hệ thống");
+//            throw new BienTheGiayException("Mã " + bienTheGiayDto.getMa() + " đã tồn tại trong hệ thống");
+            return ResponseEntity.badRequest().body("Mã " + bienTheGiayDto.getMa() + " đã tồn tại trong hệ thống");
         }
 
         ModelMapper modelMapper = new ModelMapper();
@@ -63,13 +65,13 @@ public class BienTheGiayServiceImpl implements BienTheGiayService {
         BienTheGiay addBienThe = bienTheGiayRepository.save(bienTheGiay);
         BienTheGiayDto returnValue = modelMapper.map(addBienThe, BienTheGiayDto.class);
 
-        return returnValue;
+        return ResponseEntity.ok(returnValue);
     }
 
     @Override
-    public BienTheGiayDto update(BienTheGiayDto bienTheGiayDto, int id) {
+    public ResponseEntity update(BienTheGiayDto bienTheGiayDto, int id) {
         if (bienTheGiayRepository.findById(id) == null) {
-            throw new BienTheGiayException("id " + id + " chưa có trong hệ thống");
+            ResponseEntity.badRequest().body(("id " + id + " chưa có trong hệ thống"));
         }
         bienTheGiayRepository.update(bienTheGiayDto, id);
 
@@ -77,7 +79,7 @@ public class BienTheGiayServiceImpl implements BienTheGiayService {
         BienTheGiay bienTheGiay = bienTheGiayRepository.findById(id)
                                                        .get();
         BeanUtils.copyProperties(bienTheGiay, returnValue);
-        return returnValue;
+        return ResponseEntity.ok(returnValue);
     }
 
     @Override
