@@ -58,9 +58,13 @@ public class Giay implements Serializable {
     @JoinColumn(name = "id_thuong_hieu")
     private ThuongHieu thuongHieu;
 
+    @Column(name = "so_luong")
+    private int soLuong;
+
     @Column(name = "mo_ta")
     private String moTa;
 
     @Column(name = "trang_thai", columnDefinition = " int default 0")
     private int trangThai;
+
 }
