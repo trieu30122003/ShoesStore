@@ -1,6 +1,9 @@
 package com.example.datn.service;
 
 import com.example.datn.dto.BienTheGiayDto;
+import com.example.datn.dto.GiayDto;
+import com.example.datn.dto.KichThuocDto;
+import com.example.datn.dto.MauSacDto;
 import com.example.datn.entity.BienTheGiay;
 import com.example.datn.filter.FilterBienThe;
 import org.springframework.data.domain.Page;
@@ -8,7 +11,9 @@ import org.springframework.data.domain.Page;
 public interface BienTheGiayService {
     Page<BienTheGiay> getAll(int page, int size);
 
-    BienTheGiayDto getOne(int id);
+    BienTheGiayDto getOne(MauSacDto ms, KichThuocDto kt, GiayDto g);
+
+    BienTheGiayDto getOneById(int id);
 
     BienTheGiayDto save(BienTheGiayDto bienTheGiayDto);
 

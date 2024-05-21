@@ -1,7 +1,6 @@
 package com.example.datn.controller;
 
-import com.example.datn.dto.BienTheGiayDto;
-import com.example.datn.dto.ChatLieuDto;
+import com.example.datn.dto.*;
 import com.example.datn.entity.BienTheGiay;
 import com.example.datn.entity.ChatLieu;
 import com.example.datn.filter.FilterBienThe;
@@ -31,8 +30,10 @@ public class BienTheGiayController {
 
     @GetMapping("/{id}")
     @Operation(summary = "lấy ra 1 biến thể theo id")
-    public BienTheGiayDto getOne(@PathVariable int id){
-        return baseService.getOne(id);
+    public BienTheGiayDto getOne(@RequestBody MauSacDto ms,
+                                 @RequestBody KichThuocDto kt,
+                                 @RequestBody GiayDto g){
+        return baseService.getOne(ms, kt, g);
     }
 
     @PostMapping
@@ -54,7 +55,7 @@ public class BienTheGiayController {
         OperationStatusModel returnValue = new OperationStatusModel();
         returnValue.setOperationName(RequestOperationName.DELETE.name());
         try {
-            if (baseService.getOne(id).equals(null)){
+            if (baseService.getOneById(id).equals(null)){
                 throw new IllegalArgumentException("Không tồn tại ID này");
             }
             baseService.delete(id);

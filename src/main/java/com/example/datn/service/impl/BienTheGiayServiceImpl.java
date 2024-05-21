@@ -1,6 +1,9 @@
 package com.example.datn.service.impl;
 
 import com.example.datn.dto.BienTheGiayDto;
+import com.example.datn.dto.GiayDto;
+import com.example.datn.dto.KichThuocDto;
+import com.example.datn.dto.MauSacDto;
 import com.example.datn.entity.BienTheGiay;
 import com.example.datn.exception.BienTheGiayException;
 import com.example.datn.filter.FilterBienThe;
@@ -29,10 +32,17 @@ public class BienTheGiayServiceImpl implements BienTheGiayService {
     }
 
     @Override
-    public BienTheGiayDto getOne(int id) {
+    public BienTheGiayDto getOne(MauSacDto ms, KichThuocDto kt, GiayDto g) {
         BienTheGiayDto returnValue = new BienTheGiayDto();
-        BienTheGiay bienTheGiay = bienTheGiayRepository.findById(id)
-                                                       .orElseThrow(() -> new EntityNotFoundException("Biến thể giày không tồn tại với id là: " + id));
+        BienTheGiay bienTheGiay = bienTheGiayRepository.bienThe(ms,kt,g);
+        BeanUtils.copyProperties(bienTheGiay, returnValue);
+        return returnValue;
+    }
+
+    @Override
+    public BienTheGiayDto getOneById(int id) {
+        BienTheGiayDto returnValue = new BienTheGiayDto();
+        BienTheGiay bienTheGiay = bienTheGiayRepository.findById(id).get();
         BeanUtils.copyProperties(bienTheGiay, returnValue);
         return returnValue;
     }
