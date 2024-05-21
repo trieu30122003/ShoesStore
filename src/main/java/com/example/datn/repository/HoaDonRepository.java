@@ -1,5 +1,6 @@
 package com.example.datn.repository;
 
+import com.example.datn.dto.HoaDonDto;
 import com.example.datn.entity.HoaDon;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -40,4 +41,18 @@ public interface HoaDonRepository extends JpaRepository<HoaDon, Integer> {
     void daHuy(int id);
 
 
+    @Transactional
+    @Modifying
+    @Query(value = "update HoaDon h set " +
+            "h.ma = :#{#hoaDonDto.ma}," +
+            "h.sdt = :#{#hoaDonDto.sdt}," +
+            "h.moTa = :#{#hoaDonDto.moTa}," +
+            "h.diaChi = :#{#hoaDonDto.diaChi}," +
+            "h.khachHang = :#{#hoaDonDto.khachHang}," +
+            "h.kieuThanhToan = :#{#hoaDonDto.kieuThanhToan}," +
+            "h.ngayGiao = :#{#hoaDonDto.ngayGiao}," +
+            "h.ngayThanhToan = :#{#hoaDonDto.ngayThanhToan}," +
+            "h.nhanVien = :#{#hoaDonDto.nhanVien}," +
+            "h.paymentAmount = :#{#hoaDonDto.paymentAmount} where h.trangThai = 0 or h.trangThai = 1 and h.id = :id")
+    void update(HoaDonDto hoaDonDto, int id);
 }

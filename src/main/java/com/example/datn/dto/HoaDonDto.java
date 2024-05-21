@@ -17,6 +17,7 @@ public class HoaDonDto {
     private KhachHang khachHang;
     private NhanVien nhanVien;
     private Timestamp ngayThanhToan;
+    private Timestamp ngayGiao;
     private String diaChi;
     private String sdt;
     private BigDecimal phiVanChuyen;

@@ -109,7 +109,13 @@ public class HoaDonServiceImpl implements HoaDonService {
 
     @Override
     public HoaDonDto update(HoaDonDto hoaDonDto, int id) {
-        return null;
+        HoaDonDto returnValue = new HoaDonDto();
+
+        hoaDonRepository.update(hoaDonDto, id);
+
+        HoaDon hoaDon = hoaDonRepository.findById(id).get();
+        BeanUtils.copyProperties(hoaDon, returnValue);
+        return returnValue;
     }
 
 }

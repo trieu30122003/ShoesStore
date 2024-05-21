@@ -20,6 +20,16 @@ public class HoaDonController {
         return ResponseEntity.ok(hoaDonService.getAll(page, size));
     }
 
+    @PostMapping
+    public ResponseEntity<HoaDonDto> save(@RequestBody HoaDonDto hoaDonDto){
+        return ResponseEntity.ok(hoaDonService.save(hoaDonDto));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<HoaDonDto> update(@PathVariable int id, @RequestBody HoaDonDto hoaDonDto){
+        return ResponseEntity.ok(hoaDonService.update(hoaDonDto, id));
+    }
+
     @GetMapping("/cho-xac-nhan/{id}")
     public HoaDonDto choXacNhan(@PathVariable int id){
         return hoaDonService.choXacNhan(id);

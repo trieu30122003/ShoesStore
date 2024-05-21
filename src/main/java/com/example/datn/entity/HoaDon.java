@@ -56,7 +56,7 @@ public class HoaDon implements Serializable {
     private Timestamp ngayGiao;
 
     @Column(name = "dia_chi", length = 255, nullable = false)
-    private String dia_chi;
+    private String diaChi;
 
 //    @Pattern(regexp = "^(0|\\+\\d{2})\\d{9}$")
     @Column(name = "sdt", length = 20)
