@@ -38,7 +38,7 @@ public class KhachHangController {
 
     @PostMapping
     @Operation(summary = "thêm 1 khách hàng")
-    public ResponseEntity<KhachHangDto> create(@Valid @RequestBody KhachHangDto khachHangDto) {
+    public ResponseEntity<KhachHangDto> create(@Valid @RequestBody KhachHangDto khachHangDto) throws Exception{
         return ResponseEntity.ok(khachHangService.save(khachHangDto));
     }
 

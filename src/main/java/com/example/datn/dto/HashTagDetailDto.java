@@ -16,7 +16,7 @@ public class HashTagDetailDto {
     @NotBlank(message = "HashTag is not mandatory")
     private HashTag hashTag;
     private Giay giay;
-    @NotBlank(message = "NgayTao is not mandatory")
+//    @NotBlank(message = "NgayTao is not mandatory")
     private Date ngayTao;
 
 }

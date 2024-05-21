@@ -19,9 +19,9 @@ public class NhanVienDto {
     private String ho;
     @NotBlank(message = "ten is not mandatory")
     private String ten;
-    @NotBlank(message = "gioiTinh is not mandatory")
+//    @NotBlank(message = "gioiTinh is not mandatory")
     private int gioiTinh;
-    @NotBlank(message = "ngaySinh is not mandatory")
+//    @NotBlank(message = "ngaySinh is not mandatory")
     private Date ngaySinh;
     @NotBlank(message = "diaChi is not mandatory")
     private String diaChi;
@@ -29,7 +29,7 @@ public class NhanVienDto {
     @Email(message = "email invalidate")
     private String email;
     @NotBlank(message = "sdt is not mandatory")
-    @Pattern(regexp = "/d")
+//    @Pattern(regexp = "/d")
     private String sdt;
     private String encryptedPassword;
     private int trangThai;

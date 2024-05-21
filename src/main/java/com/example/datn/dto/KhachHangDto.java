@@ -22,14 +22,14 @@ public class KhachHangDto {
     @NotBlank(message = "email is not mandatory")
     @Email(message = "email invalidate")
     private String email;
-    @NotBlank(message = "gioiTinh is not mandatory")
+//    @NotBlank(message = "gioiTinh is not mandatory")
     private int gioiTinh;
-    @NotBlank(message = "ngaySinh is not mandatory")
+//    @NotBlank(message = "ngaySinh is not mandatory")
     private Date ngaySinh;
     @NotBlank(message = "diaChi is not mandatory")
     private String diaChi;
     @NotBlank(message = "sdt is not mandatory")
-    @Pattern(regexp = "/d")
+//    @Pattern(regexp = "/d")
     private String sdt;
     private int trangThai;
 }
