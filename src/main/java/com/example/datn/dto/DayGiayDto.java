@@ -19,6 +19,6 @@ public class DayGiayDto {
     private String mauSac;
     private String moTa;
     private int trangThai;
-    @NotBlank(message = "ngayTao is not mandatory")
+//    @NotBlank(message = "ngayTao is not mandatory")
     private Date ngayTao;
 }
