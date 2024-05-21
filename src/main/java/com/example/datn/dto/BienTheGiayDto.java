@@ -26,9 +26,6 @@ public class BienTheGiayDto {
     @NotBlank(message = "hinhAnh is not mandatory")
     private String hinhAnh;
 
-    @NotBlank(message = "soLuong is not mandatory")
-    private int soLuong;
-
     private int trangThai;
 
     private KichThuoc kichThuoc;

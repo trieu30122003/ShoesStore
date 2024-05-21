@@ -32,8 +32,6 @@ public class BienTheGiay implements Serializable {
     @Column(name = "hinh_anh")
     private String hinhAnh;
 
-    @Column(name = "so_luong")
-    private int soLuong;
 
     @Column(name = "trang_thai", columnDefinition = " int default 0")
     private int trangThai;

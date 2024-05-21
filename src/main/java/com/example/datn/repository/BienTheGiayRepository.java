@@ -24,7 +24,6 @@ public interface BienTheGiayRepository extends JpaRepository<BienTheGiay, Intege
             "b.giaBan = :#{#bienTheGiayDto.giaBan}," +
             "b.giaNhap = :#{#bienTheGiayDto.giaNhap}," +
             "b.hinhAnh = :#{#bienTheGiayDto.hinhAnh}," +
-            "b.soLuong = :#{#bienTheGiayDto.soLuong}," +
             "b.kichThuoc = :#{#bienTheGiayDto.kichThuoc}," +
             "b.mauSac = :#{#bienTheGiayDto.mauSac}," +
             "b.giay = :#{#bienTheGiayDto.giay}," +
