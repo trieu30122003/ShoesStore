@@ -17,7 +17,7 @@ import java.io.Serializable;
 public class KichThuoc implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_mau_sac")
+    @Column(name = "id_kich_thuoc")
     private int id;
 
     @Column(name = "ma")
