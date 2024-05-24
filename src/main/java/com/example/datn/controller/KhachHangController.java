@@ -38,13 +38,13 @@ public class KhachHangController {
 
     @PostMapping
     @Operation(summary = "thêm 1 khách hàng")
-    public ResponseEntity<KhachHangDto> create(@Valid @RequestBody KhachHangDto khachHangDto) throws Exception{
+    public ResponseEntity<?> create(@Valid @RequestBody KhachHangDto khachHangDto){
         return ResponseEntity.ok(khachHangService.save(khachHangDto));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "update theo id")
-    public ResponseEntity<KhachHangDto> update(@Valid @PathVariable int id, @RequestBody KhachHangDto khachHangDto) {
+    public ResponseEntity<?> update(@Valid @PathVariable int id, @RequestBody KhachHangDto khachHangDto) {
         return ResponseEntity.ok(khachHangService.update(khachHangDto,id));
     }
 

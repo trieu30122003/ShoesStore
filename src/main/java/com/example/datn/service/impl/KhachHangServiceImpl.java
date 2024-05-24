@@ -41,7 +41,7 @@ public class KhachHangServiceImpl implements KhachHangService {
     @Override
     public ResponseEntity save(KhachHangDto khachHangDto) {
         if (khachHangRepository.findByMa(khachHangDto.getMa())!=null){
-            ResponseEntity.badRequest().body("Mã "+khachHangDto.getMa()+" đã tồn tại trong hệ thống");
+            return ResponseEntity.badRequest().body("Mã "+khachHangDto.getMa()+" đã tồn tại trong hệ thống");
         }
         ModelMapper modelMapper = new ModelMapper();
         KhachHang khachHang = modelMapper.map(khachHangDto, KhachHang.class);
