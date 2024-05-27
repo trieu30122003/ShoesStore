@@ -11,11 +11,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+
 @Repository
 public interface BienTheGiayRepository extends JpaRepository<BienTheGiay, Integer> {
     BienTheGiay findByMa(String ma);
 
     Page<BienTheGiay> findByGiay_Ten(String name, Pageable pageable);
+
+    BigDecimal findByGiaBan(int id);
+
     @Transactional
     @Modifying
     @Query(value = "update BienTheGiay b set " +

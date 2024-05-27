@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
+
 @Repository
 public interface HoaDonRepository extends JpaRepository<HoaDon, Integer> {
     @Transactional
@@ -55,4 +57,7 @@ public interface HoaDonRepository extends JpaRepository<HoaDon, Integer> {
             "h.nhanVien = :#{#hoaDonDto.nhanVien}," +
             "h.paymentAmount = :#{#hoaDonDto.paymentAmount} where h.trangThai = 0 or h.trangThai = 1 and h.id = :id")
     void update(HoaDonDto hoaDonDto, int id);
+
+    @Query(value = "select COUNT(distinct hd.khachHang) from HoaDon hd where hd.ngayThanhToan between :tuNgay and :denNgay")
+    int soLuongKhachHang(Date tuNgay, Date denNgay);
 }
