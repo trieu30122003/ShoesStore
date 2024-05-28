@@ -19,8 +19,8 @@ public class HoaDonChiTietController {
         return ResponseEntity.ok(hoaDonChiTietService.getAllByHoaDon(id));
     }
 
-    @PostMapping
-    public ResponseEntity<?> save(HoaDonChiTietDto hoaDonChiTietDto){
+    @PostMapping("/add-bill")
+    public ResponseEntity<?> save(@RequestBody HoaDonChiTietDto hoaDonChiTietDto){
         return ResponseEntity.ok(hoaDonChiTietService.save(hoaDonChiTietDto));
     }
 }

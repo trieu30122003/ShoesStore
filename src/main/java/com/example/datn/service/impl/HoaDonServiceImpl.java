@@ -22,6 +22,9 @@ public class HoaDonServiceImpl implements HoaDonService {
     @Autowired
     GiayRepository giayRepository;
 
+    @Autowired
+    EmailService emailService;
+
     @Override
     public Page<HoaDon> getAll(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
@@ -40,7 +43,14 @@ public class HoaDonServiceImpl implements HoaDonService {
 
         HoaDon addHD = hoaDonRepository.save(hoaDon);
         HoaDonDto returnValue = modelMapper.map(addHD, HoaDonDto.class);
-
+        if (returnValue != null) {
+            String to = hoaDonDto.getKhachHang()
+                                 .getEmail();
+            String subject = "Hóa đơn " + hoaDonDto.getMa();
+            String text = "Dear " + hoaDonDto.getKhachHang()
+                                             .getTen() + " chúng tôi sẽ gửi đơn hàng cho bạn vào ngày " + hoaDonDto.getNgayGiao() + " đến địa chỉ là: " + hoaDonDto.getDiaChi();
+            emailService.sendEmail(to, subject, text);
+        }
         return returnValue;
     }
 
@@ -48,7 +58,8 @@ public class HoaDonServiceImpl implements HoaDonService {
     public HoaDonDto choXacNhan(int id) {
         HoaDonDto returnValue = new HoaDonDto();
         hoaDonRepository.choXacNhan(id);
-        HoaDon hoaDon = hoaDonRepository.findById(id).get();
+        HoaDon hoaDon = hoaDonRepository.findById(id)
+                                        .get();
         BeanUtils.copyProperties(hoaDon, returnValue);
         return returnValue;
     }
@@ -62,7 +73,8 @@ public class HoaDonServiceImpl implements HoaDonService {
         int soLuongGiay = giay.getSoLuong() - soLuong;
         giayRepository.updateSoLuong(soLuongGiay);
 
-        HoaDon hoaDon = hoaDonRepository.findById(id).get();
+        HoaDon hoaDon = hoaDonRepository.findById(id)
+                                        .get();
         BeanUtils.copyProperties(hoaDon, returnValue);
         return returnValue;
     }
@@ -72,7 +84,8 @@ public class HoaDonServiceImpl implements HoaDonService {
         HoaDonDto returnValue = new HoaDonDto();
         hoaDonRepository.dangGiao(id);
 
-        HoaDon hoaDon = hoaDonRepository.findById(id).get();
+        HoaDon hoaDon = hoaDonRepository.findById(id)
+                                        .get();
         BeanUtils.copyProperties(hoaDon, returnValue);
         return returnValue;
     }
@@ -82,7 +95,8 @@ public class HoaDonServiceImpl implements HoaDonService {
         HoaDonDto returnValue = new HoaDonDto();
         hoaDonRepository.daGiao(id);
 
-        HoaDon hoaDon = hoaDonRepository.findById(id).get();
+        HoaDon hoaDon = hoaDonRepository.findById(id)
+                                        .get();
         BeanUtils.copyProperties(hoaDon, returnValue);
         return returnValue;
     }
@@ -92,7 +106,8 @@ public class HoaDonServiceImpl implements HoaDonService {
         HoaDonDto returnValue = new HoaDonDto();
         hoaDonRepository.daHuy(id);
 
-        HoaDon hoaDon = hoaDonRepository.findById(id).get();
+        HoaDon hoaDon = hoaDonRepository.findById(id)
+                                        .get();
         BeanUtils.copyProperties(hoaDon, returnValue);
         return returnValue;
     }
@@ -102,7 +117,8 @@ public class HoaDonServiceImpl implements HoaDonService {
         HoaDonDto returnValue = new HoaDonDto();
         hoaDonRepository.daNhan(id);
 
-        HoaDon hoaDon = hoaDonRepository.findById(id).get();
+        HoaDon hoaDon = hoaDonRepository.findById(id)
+                                        .get();
         BeanUtils.copyProperties(hoaDon, returnValue);
         return returnValue;
     }
@@ -113,7 +129,8 @@ public class HoaDonServiceImpl implements HoaDonService {
 
         hoaDonRepository.update(hoaDonDto, id);
 
-        HoaDon hoaDon = hoaDonRepository.findById(id).get();
+        HoaDon hoaDon = hoaDonRepository.findById(id)
+                                        .get();
         BeanUtils.copyProperties(hoaDon, returnValue);
         return returnValue;
     }
