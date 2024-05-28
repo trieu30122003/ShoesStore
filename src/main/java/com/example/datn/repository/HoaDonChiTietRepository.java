@@ -12,6 +12,8 @@ import java.util.List;
 @Repository
 public interface HoaDonChiTietRepository extends JpaRepository<HoaDonChiTiet, Integer> {
 
+    HoaDonChiTiet findByHoaDon_Id(int id);
+
     @Query(value = "select hdct from HoaDonChiTiet hdct where hdct.hoaDon.id = :id")
     List<HoaDonChiTiet> getAll(int id);
 

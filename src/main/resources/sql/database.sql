@@ -38,6 +38,10 @@ CREATE TABLE IF NOT EXISTS `bien_the_giay` (
   CONSTRAINT `FKfuymec0spwosimphlsfmxpt7w` FOREIGN KEY (`id_mau_sac`) REFERENCES `mau_sac` (`id_mau_sac`),
   CONSTRAINT `FKs21dfvbkeqdvmu8scs6flbnea` FOREIGN KEY (`id_kich_thuoc`) REFERENCES `kich_thuoc` (`id_kich_thuoc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- data
+INSERT INTO `shoe`.`bien_the_giay` (`gia_ban`, `gia_nhap`, `ma`, `trang_thai`, `id_giay`, `id_kich_thuoc`, `id_mau_sac`) VALUES ('3000000', '2700000', 'BT1', '0', '1', '1', '1');
+INSERT INTO `shoe`.`bien_the_giay` (`gia_ban`, `gia_nhap`, `ma`, `trang_thai`, `id_giay`, `id_kich_thuoc`, `id_mau_sac`) VALUES ('3000000', '2700000', 'BT2', '0', '2', '1', '2');
+INSERT INTO `shoe`.`bien_the_giay` (`gia_ban`, `gia_nhap`, `ma`, `trang_thai`, `id_giay`, `id_kich_thuoc`, `id_mau_sac`) VALUES ('3000000', '2700000', 'BT3', '0', '1', '1', '2');
 
 -- Data exporting was unselected.
 
@@ -50,6 +54,12 @@ CREATE TABLE IF NOT EXISTS `chat_lieu` (
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_day_giay`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- data
+
+INSERT INTO `shoe`.`chat_lieu` (`ma`, `ten`, `trang_thai`) VALUES ('CL1', 'da', '0');
+INSERT INTO `shoe`.`chat_lieu` (`ma`, `ten`, `trang_thai`) VALUES ('CL2', 'da bò', '0');
+INSERT INTO `shoe`.`chat_lieu` (`ma`, `ten`, `trang_thai`) VALUES ('CL3', 'da tổng hợp', '0');
+INSERT INTO `shoe`.`chat_lieu` (`ma`, `ten`, `trang_thai`) VALUES ('CL3', 'da cá sấu', '0');
 
 -- Data exporting was unselected.
 
@@ -62,6 +72,9 @@ CREATE TABLE IF NOT EXISTS `co_giay` (
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_co_giay`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- data
+INSERT INTO `shoe`.`co_giay` (`ma`, `ten`, `trang_thai`) VALUES ('C1', 'cổ thấp', '0');
+INSERT INTO `shoe`.`co_giay` (`ma`, `ten`, `trang_thai`) VALUES ('C2', 'cổ cao', '0');
 
 -- Data exporting was unselected.
 
@@ -76,6 +89,10 @@ CREATE TABLE IF NOT EXISTS `day_giay` (
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_day_giay`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- data
+INSERT INTO `shoe`.`day_giay` (`ma`, `mau_sac`, `ngay_tao`, `ten`, `trang_thai`) VALUES ('DG1', 'trắng', '2024-05-28', 'dây giày nike trắng', '0');
+INSERT INTO `shoe`.`day_giay` (`ma`, `mau_sac`, `ngay_tao`, `ten`, `trang_thai`) VALUES ('DG2', 'đen', '2024-05-28', 'dây giày nike', '0');
+INSERT INTO `shoe`.`day_giay` (`ma`, `mau_sac`, `ngay_tao`, `ten`, `trang_thai`) VALUES ('DG3', 'Xanh', '2024-05-28', 'dây giày adidas', '0');
 
 -- Data exporting was unselected.
 
@@ -90,6 +107,9 @@ CREATE TABLE IF NOT EXISTS `de_giay` (
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_de_giay`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- data
+INSERT INTO `shoe`.`de_giay` (`chat_lieu`, `ma`, `mau_sac`, `ten`, `trang_thai`) VALUES ('nhựa', 'D2', 'trắng', 'đế nhựa', '0');
+INSERT INTO `shoe`.`de_giay` (`chat_lieu`, `ma`, `mau_sac`, `ten`, `trang_thai`) VALUES ('cao su', 'D1', 'trắng', 'đế cao su', '0');
 
 -- Data exporting was unselected.
 
@@ -125,6 +145,11 @@ CREATE TABLE IF NOT EXISTS `giay` (
   CONSTRAINT `FKrjnnfemv3vtkxgr1kenwm5cnh` FOREIGN KEY (`id_lot_giay`) REFERENCES `lot_giay` (`id_lot_giay`),
   CONSTRAINT `FKssaiv44by85b3ynmyuvysgv35` FOREIGN KEY (`id_de_giay`) REFERENCES `de_giay` (`id_de_giay`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- data
+INSERT INTO `shoe`.`giay` (`ma`, `ngay_san_xuat`, `so_luong`, `ten`, `trang_thai`, `id_chat_lieu`, `id_co_giay`, `id_day_giay`, `id_de_giay`, `id_lot_giay`, `id_mui_giay`, `id_thuong_hieu`) VALUES ('G1', '2024-05-28', '50', 'nike force one', '0', '1', '1', '1', '1', '1', '1', '1');
+INSERT INTO `shoe`.`giay` (`ma`, `ngay_san_xuat`, `so_luong`, `ten`, `trang_thai`, `id_chat_lieu`, `id_co_giay`, `id_day_giay`, `id_de_giay`, `id_lot_giay`, `id_mui_giay`, `id_thuong_hieu`) VALUES ('G2', '2024-05-28', '50', 'nike force one hight', '0', '1', '2', '1', '1', '1', '1', '1');
+INSERT INTO `shoe`.`giay` (`ma`, `ngay_san_xuat`, `so_luong`, `ten`, `trang_thai`, `id_chat_lieu`, `id_co_giay`, `id_day_giay`, `id_de_giay`, `id_lot_giay`, `id_mui_giay`, `id_thuong_hieu`) VALUES ('G3', '2024-05-28', '50', 'adidas', '0', '1', '1', '2', '1', '2', '1', '2');
+INSERT INTO `shoe`.`giay` (`ma`, `ngay_san_xuat`, `so_luong`, `ten`, `trang_thai`, `id_chat_lieu`, `id_co_giay`, `id_day_giay`, `id_de_giay`, `id_lot_giay`, `id_mui_giay`, `id_thuong_hieu`) VALUES ('G4', '2024-05-28', '30', 'jordan hight full while', '0', '3', '2', '1', '1', '3', '1', '3');
 
 -- Data exporting was unselected.
 
@@ -239,6 +264,9 @@ CREATE TABLE IF NOT EXISTS `khach_hang` (
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_khach_hang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- data
+INSERT INTO `shoe`.`khach_hang` (`dia_chi`, `email`, `gioi_tinh`, `ho`, `ma_kh`, `ngay_sinh`, `sdt`, `ten`, `trang_thai`) VALUES ('Quảng Ninh', 'vuchitrieu2003@gmail.com', '1', 'vũ', 'KH1', '2003-12-30', '0982145133', 'triều', '0');
+INSERT INTO `shoe`.`khach_hang` (`dia_chi`, `email`, `gioi_tinh`, `ho`, `ma_kh`, `ngay_sinh`, `sdt`, `ten`, `trang_thai`) VALUES ('Qảng Ninh', 'bienvuchi3103@gmail.com', '1', 'vũ', 'KH2', '2000-03-31', '09999999999', 'biển', '0');
 
 -- Data exporting was unselected.
 
@@ -253,7 +281,8 @@ CREATE TABLE IF NOT EXISTS `kich_thuoc` (
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_kich_thuoc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+-- data
+INSERT INTO `shoe`.`kich_thuoc` (`chieu_dai`, `chieu_rong`, `ma`, `ten`, `trang_thai`) VALUES ('15', '5', 'KT1', 'S', '0');
 -- Data exporting was unselected.
 
 -- Dumping structure for table shoe.lot_giay
@@ -265,6 +294,10 @@ CREATE TABLE IF NOT EXISTS `lot_giay` (
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_lot_giay`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- data
+INSERT INTO `shoe`.`lot_giay` (`ma`, `ten`, `trang_thai`) VALUES ('L1', 'Lót nike', '0');
+INSERT INTO `shoe`.`lot_giay` (`ma`, `ten`, `trang_thai`) VALUES ('L2', 'Lót adidas', '0');
+INSERT INTO `shoe`.`lot_giay` (`ma`, `ten`, `trang_thai`) VALUES ('L3', 'Lót Jordan', '0');
 
 -- Data exporting was unselected.
 
@@ -277,7 +310,9 @@ CREATE TABLE IF NOT EXISTS `mau_sac` (
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_mau_sac`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+-- data
+INSERT INTO `shoe`.`mau_sac` (`ma`, `ten`, `trang_thai`) VALUES ('MS1', 'Đen', '0');
+INSERT INTO `shoe`.`mau_sac` (`ma`, `ten`, `trang_thai`) VALUES ('MS2', 'Đỏ', '0');
 -- Data exporting was unselected.
 
 -- Dumping structure for table shoe.mui_giay
@@ -289,7 +324,8 @@ CREATE TABLE IF NOT EXISTS `mui_giay` (
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_mui_giay`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+-- data
+INSERT INTO `shoe`.`mui_giay` (`ma`, `ten`, `trang_thai`) VALUES ('M1', 'mũi da', '0');
 -- Data exporting was unselected.
 
 -- Dumping structure for table shoe.nhan_vien
@@ -306,6 +342,8 @@ CREATE TABLE IF NOT EXISTS `nhan_vien` (
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_nhan_vien`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- data
+INSERT INTO `shoe`.`nhan_vien` (`dia_chi`, `email`, `gioi_tinh`, `ho`, `ma_nhan_vien`, `ngay_sinh`, `sdt`, `ten`, `trang_thai`) VALUES ('HN', 'gaucute764@gmail.com', '0', 'nguyễn', 'NV1', '2003-10-10', '08989898988', 'A', '0');
 
 -- Data exporting was unselected.
 
@@ -318,6 +356,10 @@ CREATE TABLE IF NOT EXISTS `thuong_hieu` (
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_thuong_hieu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- data
+INSERT INTO `shoe`.`thuong_hieu` (`ma`, `ten`, `trang_thai`) VALUES ('TH1', 'nike', '0');
+INSERT INTO `shoe`.`thuong_hieu` (`ma`, `ten`, `trang_thai`) VALUES ('TH2', 'adidas', '0');
+INSERT INTO `shoe`.`thuong_hieu` (`ma`, `ten`, `trang_thai`) VALUES ('TH3', 'jordan', '0');
 
 -- Data exporting was unselected.
 

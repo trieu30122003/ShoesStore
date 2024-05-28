@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +48,14 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
 //                                                                                .getId())
 //                                                  .multiply(BigDecimal.valueOf(hoaDonChiTietDto.getSoLuong()));
 //            hoaDonChiTiet.setGia(gia);
+            int giay = giayRepository.findBySoLuong(hoaDonChiTietDto.getBienTheGiay()
+                                                                    .getGiay()
+                                                                    .getId());
+            int soLuongGiay = giay - hoaDonChiTiet.getSoLuong();
+            giayRepository.updateSoLuong(soLuongGiay, hoaDonChiTietDto.getBienTheGiay()
+                                                                      .getGiay()
+                                                                      .getId());
+
             HoaDonChiTiet addHDCT = hoaDonChiTietRepository.save(hoaDonChiTiet);
             HoaDonChiTietDto returnValue = modelMapper.map(addHDCT, HoaDonChiTietDto.class);
             return ResponseEntity.ok(returnValue);

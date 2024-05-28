@@ -11,9 +11,11 @@ public interface HoaDonService {
 
     HoaDonDto save(HoaDonDto hoaDonDto);
 
+
+
     HoaDonDto choXacNhan(int id);
 
-    HoaDonDto xacNhan(int id, int soLuong);
+    HoaDonDto xacNhan(int id);
 
     HoaDonDto dangGiao(int id);
 

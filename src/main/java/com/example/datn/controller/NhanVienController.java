@@ -1,14 +1,11 @@
 package com.example.datn.controller;
 
-import com.example.datn.dto.MauSacDto;
 import com.example.datn.dto.NhanVienDto;
-import com.example.datn.entity.MauSac;
 import com.example.datn.entity.NhanVien;
 import com.example.datn.request.OperationStatusModel;
 import com.example.datn.request.RequestOperationStatus;
 import com.example.datn.service.BaseService;
 import io.swagger.v3.oas.annotations.Operation;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +20,7 @@ public class NhanVienController {
     @GetMapping
     @Operation(summary = "getAll")
     public ResponseEntity<Page<NhanVien>> getAll(@RequestParam(value = "page", defaultValue = "0") int page,
-                                                      @RequestParam(value = "size", defaultValue = "5") int size) {
+                                                 @RequestParam(value = "size", defaultValue = "5") int size) {
         return ResponseEntity.ok(baseService.getAll(page, size));
     }
 
@@ -68,8 +65,8 @@ public class NhanVienController {
     @GetMapping("/search")
     @Operation(summary = "tìm kiếm theo tên hoặc họ hoặc sdt hoặc email hoặc mã")
     public ResponseEntity<Page<NhanVien>> search(@RequestParam(value = "name") String name,
-                                               @RequestParam(value = "page", defaultValue = "0") int page,
-                                               @RequestParam(value = "size", defaultValue = "5") int size) {
+                                                 @RequestParam(value = "page", defaultValue = "0") int page,
+                                                 @RequestParam(value = "size", defaultValue = "5") int size) {
         return ResponseEntity.ok(baseService.search(name, page, size));
     }
 }

@@ -46,8 +46,8 @@ public interface GiayRepository extends JpaRepository<Giay,Integer> {
 
     @Transactional
     @Modifying
-    @Query(value = "update Giay g set g.soLuong = :soLuong")
-    void updateSoLuong(int soLuong);
+    @Query(value = "update Giay g set g.soLuong = :soLuong where g.id = :id")
+    void updateSoLuong(int soLuong, int id);
 
 //    @Query(value = "select g from Giay g where g.thuongHieu.id = :id")
 //    Page<Giay> findAllByThuongHieu(int id);

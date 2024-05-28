@@ -36,8 +36,8 @@ public class HoaDonController {
     }
 
     @GetMapping("/xac-nhan/{id}")
-    public HoaDonDto xacNhan(@PathVariable int id, @RequestParam(value = "soLuong")int soLuong){
-        return hoaDonService.xacNhan(id, soLuong);
+    public HoaDonDto xacNhan(@PathVariable int id){
+        return hoaDonService.xacNhan(id);
     }
 
     @GetMapping("/dang-giao/{id}")

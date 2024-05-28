@@ -1,9 +1,12 @@
 package com.example.datn.service.impl;
 
+import com.example.datn.dto.HoaDonChiTietDto;
 import com.example.datn.dto.HoaDonDto;
 import com.example.datn.entity.Giay;
 import com.example.datn.entity.HoaDon;
+import com.example.datn.entity.HoaDonChiTiet;
 import com.example.datn.repository.GiayRepository;
+import com.example.datn.repository.HoaDonChiTietRepository;
 import com.example.datn.repository.HoaDonRepository;
 import com.example.datn.service.HoaDonService;
 import org.modelmapper.ModelMapper;
@@ -25,6 +28,9 @@ public class HoaDonServiceImpl implements HoaDonService {
     @Autowired
     EmailService emailService;
 
+    @Autowired
+    HoaDonChiTietRepository hoaDonChiTietRepository;
+
     @Override
     public Page<HoaDon> getAll(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
@@ -35,12 +41,15 @@ public class HoaDonServiceImpl implements HoaDonService {
 
     @Override
     public HoaDonDto save(HoaDonDto hoaDonDto) {
+//        HoaDonChiTiet hoaDonChiTiet = hoaDonChiTietRepository.findByHoaDon_Id(hoaDonDto.getId());
         ModelMapper modelMapper = new ModelMapper();
         HoaDon hoaDon = modelMapper.map(hoaDonDto, HoaDon.class);
         hoaDon.setKhachHang(hoaDonDto.getKhachHang());
         hoaDon.setNhanVien(hoaDonDto.getNhanVien());
 
+
         HoaDon addHD = hoaDonRepository.save(hoaDon);
+
         HoaDonDto returnValue = modelMapper.map(addHD, HoaDonDto.class);
         if (returnValue != null) {
             String to = hoaDonDto.getKhachHang()
@@ -57,6 +66,10 @@ public class HoaDonServiceImpl implements HoaDonService {
     public HoaDonDto choXacNhan(int id) {
         HoaDonDto returnValue = new HoaDonDto();
         hoaDonRepository.choXacNhan(id);
+
+
+
+
         HoaDon hoaDon = hoaDonRepository.findById(id)
                                         .get();
         BeanUtils.copyProperties(hoaDon, returnValue);
@@ -64,14 +77,9 @@ public class HoaDonServiceImpl implements HoaDonService {
     }
 
     @Override
-    public HoaDonDto xacNhan(int id, int soLuong) {
+    public HoaDonDto xacNhan(int id) {
         HoaDonDto returnValue = new HoaDonDto();
         hoaDonRepository.xacNhan(id);
-
-        Giay giay = new Giay();
-        int soLuongGiay = giay.getSoLuong() - soLuong;
-        giayRepository.updateSoLuong(soLuongGiay);
-
         HoaDon hoaDon = hoaDonRepository.findById(id)
                                         .get();
         BeanUtils.copyProperties(hoaDon, returnValue);
