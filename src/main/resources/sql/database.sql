@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `bien_the_giay` (
   CONSTRAINT `FK3p09daj604sfawd68n8e0tt` FOREIGN KEY (`id_giay`) REFERENCES `giay` (`id_giay`),
   CONSTRAINT `FKfuymec0spwosimphlsfmxpt7w` FOREIGN KEY (`id_mau_sac`) REFERENCES `mau_sac` (`id_mau_sac`),
   CONSTRAINT `FKs21dfvbkeqdvmu8scs6flbnea` FOREIGN KEY (`id_kich_thuoc`) REFERENCES `kich_thuoc` (`id_kich_thuoc`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `chat_lieu` (
   `ten` varchar(255) DEFAULT NULL,
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_day_giay`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `co_giay` (
   `ten` varchar(255) DEFAULT NULL,
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_co_giay`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `day_giay` (
   `ten` varchar(255) DEFAULT NULL,
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_day_giay`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `de_giay` (
   `ten` varchar(255) DEFAULT NULL,
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_de_giay`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `giay` (
   CONSTRAINT `FKqs95hw55fd7kwvf97vdvl57bq` FOREIGN KEY (`id_co_giay`) REFERENCES `co_giay` (`id_co_giay`),
   CONSTRAINT `FKrjnnfemv3vtkxgr1kenwm5cnh` FOREIGN KEY (`id_lot_giay`) REFERENCES `lot_giay` (`id_lot_giay`),
   CONSTRAINT `FKssaiv44by85b3ynmyuvysgv35` FOREIGN KEY (`id_de_giay`) REFERENCES `de_giay` (`id_de_giay`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `hoa_don` (
   KEY `FKkuxkrkgq8yftm4d8d7o0w6nbv` (`id_nhan_vien`),
   CONSTRAINT `FKkuxkrkgq8yftm4d8d7o0w6nbv` FOREIGN KEY (`id_nhan_vien`) REFERENCES `nhan_vien` (`id_nhan_vien`),
   CONSTRAINT `FKrygimdf5nr1g2t6u03gvtr1te` FOREIGN KEY (`id_khach_hang`) REFERENCES `khach_hang` (`id_khach_hang`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -221,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `hoa_don_chi_tiet` (
   KEY `FK5adopt864mjisuy5xmgmy8iun` (`id_hoa_don`),
   CONSTRAINT `FK5adopt864mjisuy5xmgmy8iun` FOREIGN KEY (`id_hoa_don`) REFERENCES `hoa_don` (`id_hoa_don`),
   CONSTRAINT `FK6vb5qrxqp8w24r2m722fdupxn` FOREIGN KEY (`id_bien_the_giay`) REFERENCES `bien_the_giay` (`id_bien_the_giay`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -230,9 +230,6 @@ CREATE TABLE IF NOT EXISTS `khach_hang` (
   `id_khach_hang` bigint(20) NOT NULL AUTO_INCREMENT,
   `dia_chi` varchar(255) DEFAULT NULL,
   `email` varchar(120) DEFAULT NULL,
-  `email_verification_status` bit(1) DEFAULT NULL,
-  `email_verification_token` varchar(255) DEFAULT NULL,
-  `encrypted_password` varchar(255) DEFAULT NULL,
   `gioi_tinh` int(11) DEFAULT NULL,
   `ho` varchar(50) DEFAULT NULL,
   `ma_kh` varchar(255) DEFAULT NULL,
@@ -241,7 +238,7 @@ CREATE TABLE IF NOT EXISTS `khach_hang` (
   `ten` varchar(50) DEFAULT NULL,
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_khach_hang`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -255,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `kich_thuoc` (
   `ten` varchar(255) DEFAULT NULL,
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_kich_thuoc`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -267,7 +264,7 @@ CREATE TABLE IF NOT EXISTS `lot_giay` (
   `ten` varchar(255) DEFAULT NULL,
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_lot_giay`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -279,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `mau_sac` (
   `ten` varchar(255) DEFAULT NULL,
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_mau_sac`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -291,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `mui_giay` (
   `ten` varchar(255) DEFAULT NULL,
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_mui_giay`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -300,7 +297,6 @@ CREATE TABLE IF NOT EXISTS `nhan_vien` (
   `id_nhan_vien` bigint(20) NOT NULL AUTO_INCREMENT,
   `dia_chi` varchar(255) DEFAULT NULL,
   `email` varchar(120) NOT NULL,
-  `encrypted_password` varchar(255) NOT NULL,
   `gioi_tinh` int(11) NOT NULL,
   `ho` varchar(50) NOT NULL,
   `ma_nhan_vien` varchar(255) NOT NULL,
@@ -321,7 +317,7 @@ CREATE TABLE IF NOT EXISTS `thuong_hieu` (
   `ten` varchar(255) DEFAULT NULL,
   `trang_thai` int(11) DEFAULT '0',
   PRIMARY KEY (`id_thuong_hieu`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
