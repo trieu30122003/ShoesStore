@@ -18,8 +18,10 @@ import java.util.List;
 public interface GiayRepository extends JpaRepository<Giay,Integer> {
     Giay findByMa(String ma);
 
+    @Query(value = "select g.soLuong from Giay g where g.id = :id")
     int findBySoLuong(int id);
 
+    @Query(value = "select g.trangThai from Giay g where g.id = :id")
     int findByTrangThai(int id);
 
     @Transactional

@@ -17,7 +17,7 @@ import java.sql.Date;
 @Table(name="nhan_vien")
 public class NhanVien implements Serializable {
 
-    private static final long serialVersionUID = 5313493413859894403L;
+//    private static final long serialVersionUID = 5313493413859894403L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,8 +46,8 @@ public class NhanVien implements Serializable {
     @Column(name = "sdt", length = 20, nullable = false)
     private String sdt;
 
-    @Column(name = "encrypted_password", length = 255, nullable = false)
-    private String encryptedPassword;
+//    @Column(name = "encrypted_password", length = 255, nullable = false)
+//    private String encryptedPassword;
 
 //    @Lob
 //    @Column(name = "image")

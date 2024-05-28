@@ -24,9 +24,9 @@ public class KhachHang implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_khach_hang")
     private long id;
-
-    @Column(name = "email_verification_status")
-    private boolean emailVerificationStatus;
+//
+//    @Column(name = "email_verification_status")
+//    private boolean emailVerificationStatus;
 
     @Column(name = "ho", length = 50)
     private String ho;
@@ -37,11 +37,11 @@ public class KhachHang implements Serializable {
     @Column(name = "email", length = 120)
     private String email;
 
-    @Column(name = "email_verification_token", length = 255)
-    private String emailVerificationToken;
-
-    @Column(name = "encrypted_password", length = 255)
-    private String encryptedPassword;
+//    @Column(name = "email_verification_token", length = 255)
+//    private String emailVerificationToken;
+//
+//    @Column(name = "encrypted_password", length = 255)
+//    private String encryptedPassword;
 
     @Column(name = "gioi_tinh")
     private int gioiTinh;

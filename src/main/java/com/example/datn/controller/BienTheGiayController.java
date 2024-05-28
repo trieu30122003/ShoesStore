@@ -1,12 +1,13 @@
 package com.example.datn.controller;
 
-import com.example.datn.dto.*;
+import com.example.datn.dto.BienTheGiayDto;
+import com.example.datn.dto.GiayDto;
+import com.example.datn.dto.KichThuocDto;
+import com.example.datn.dto.MauSacDto;
 import com.example.datn.entity.BienTheGiay;
-import com.example.datn.entity.ChatLieu;
 import com.example.datn.filter.FilterBienThe;
 import com.example.datn.request.OperationStatusModel;
 import com.example.datn.request.RequestOperationStatus;
-import com.example.datn.service.BaseService;
 import com.example.datn.service.BienTheGiayService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;

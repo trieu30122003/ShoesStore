@@ -20,8 +20,8 @@ public class HinhAnh implements Serializable {
     @Column(name = "id_hinh_anh")
     private int id;
 
-    @Column(name = "link")
-    private String link;
+    @Column(name = "base64_img", columnDefinition = "TEXT")
+    private String base64Img;
 
     @Column(name = "uu_tien")
     private int uuTien;

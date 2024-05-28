@@ -1,7 +1,6 @@
 package com.example.datn.dto;
 
 import com.example.datn.entity.BienTheGiay;
-import com.example.datn.entity.Giay;
 import com.example.datn.entity.HoaDon;
 import lombok.Getter;
 import lombok.Setter;

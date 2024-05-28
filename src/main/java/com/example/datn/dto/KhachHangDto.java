@@ -13,22 +13,22 @@ import java.sql.Date;
 
 public class KhachHangDto {
     private int id;
-    @NotBlank(message = "Ma is not mandatory")
+//    @NotBlank(message = "Ma is not mandatory")
     private String ma;
-    @NotBlank(message = "ho is not mandatory")
+//    @NotBlank(message = "ho is not mandatory")
     private String ho;
-    @NotBlank(message = "ten is not mandatory")
+//    @NotBlank(message = "ten is not mandatory")
     private String ten;
-    @NotBlank(message = "email is not mandatory")
-    @Email(message = "email invalidate")
+//    @NotBlank(message = "email is not mandatory")
+//    @Email(message = "email invalidate")
     private String email;
 //    @NotBlank(message = "gioiTinh is not mandatory")
     private int gioiTinh;
 //    @NotBlank(message = "ngaySinh is not mandatory")
     private Date ngaySinh;
-    @NotBlank(message = "diaChi is not mandatory")
+//    @NotBlank(message = "diaChi is not mandatory")
     private String diaChi;
-    @NotBlank(message = "sdt is not mandatory")
+//    @NotBlank(message = "sdt is not mandatory")
 //    @Pattern(regexp = "/d")
     private String sdt;
     private int trangThai;

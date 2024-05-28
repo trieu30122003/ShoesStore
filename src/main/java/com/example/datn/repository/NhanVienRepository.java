@@ -27,7 +27,7 @@ public interface NhanVienRepository extends JpaRepository<NhanVien, Integer> {
             "m.diaChi = :#{#nhanVienDto.diaChi}," +
             "m.email = :#{#nhanVienDto.email}," +
             "m.sdt = :#{#nhanVienDto.sdt}," +
-            "m.encryptedPassword = :#{#nhanVienDto.encryptedPassword}," +
+//            "m.encryptedPassword = :#{#nhanVienDto.encryptedPassword}," +
             "m.trangThai = :#{#nhanVienDto.trangThai} where m.id = :id")
     void update(NhanVienDto nhanVienDto, int id);
 

@@ -38,7 +38,7 @@ public class KhachHangController {
 
     @PostMapping
     @Operation(summary = "thêm 1 khách hàng")
-    public ResponseEntity<?> create(@Valid @RequestBody KhachHangDto khachHangDto){
+    public ResponseEntity<?> create(@RequestBody KhachHangDto khachHangDto){
         return ResponseEntity.ok(khachHangService.save(khachHangDto));
     }
 

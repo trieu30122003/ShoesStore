@@ -1,7 +1,6 @@
 package com.example.datn.service.impl;
 
 import com.example.datn.dto.HoaDonChiTietDto;
-import com.example.datn.entity.BienTheGiay;
 import com.example.datn.entity.HoaDonChiTiet;
 import com.example.datn.repository.BienTheGiayRepository;
 import com.example.datn.repository.GiayRepository;
@@ -30,25 +29,30 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
     BienTheGiayRepository bienTheGiayRepository;
 
     @Override
-    public ResponseEntity save(HoaDonChiTietDto hoaDonChiTietDto) {
-//        BienTheGiay bienTheGiay = bienTheGiayRepository.findAll();
-        if (giayRepository.findBySoLuong(hoaDonChiTietDto.getBienTheGiay().getGiay().getSoLuong())> hoaDonChiTietDto.getSoLuong()){
-            return ResponseEntity.badRequest().body("Vuợt quá số lượng");
-//            throw new GiayException("Số lượng đã vượt quá số lượng còn lại!!");
+    public ResponseEntity<?> save(HoaDonChiTietDto hoaDonChiTietDto) {
+        if (giayRepository.findBySoLuong(hoaDonChiTietDto.getBienTheGiay()
+                                                         .getGiay()
+                                                         .getId()) < (hoaDonChiTietDto.getSoLuong())) {
+            return ResponseEntity.badRequest()
+                                 .body("Vuợt quá số lượng");
+        } else if (giayRepository.findByTrangThai(hoaDonChiTietDto.getBienTheGiay()
+                                                                  .getGiay()
+                                                                  .getId()) == 1) {
+            return ResponseEntity.badRequest()
+                                 .body("Sản phẩm này đã hết hàng");
+        } else {
+            ModelMapper modelMapper = new ModelMapper();
+            HoaDonChiTiet hoaDonChiTiet = modelMapper.map(hoaDonChiTietDto, HoaDonChiTiet.class);
+            hoaDonChiTiet.setBienTheGiay(hoaDonChiTietDto.getBienTheGiay());
+            hoaDonChiTiet.setHoaDon(hoaDonChiTietDto.getHoaDon());
+//            BigDecimal gia = bienTheGiayRepository.findByGiaBan(hoaDonChiTietDto.getBienTheGiay()
+//                                                                                .getId())
+//                                                  .multiply(BigDecimal.valueOf(hoaDonChiTietDto.getSoLuong()));
+//            hoaDonChiTiet.setGia(gia);
+            HoaDonChiTiet addHDCT = hoaDonChiTietRepository.save(hoaDonChiTiet);
+            HoaDonChiTietDto returnValue = modelMapper.map(addHDCT, HoaDonChiTietDto.class);
+            return ResponseEntity.ok(returnValue);
         }
-        if (giayRepository.findByTrangThai(hoaDonChiTietDto.getBienTheGiay().getGiay().getTrangThai())==1){
-//            throw new GiayException("Sản phẩm này đã hết hàng!!");
-            return ResponseEntity.badRequest().body("Sản phẩm này đã hết hàng");
-        }
-        ModelMapper modelMapper = new ModelMapper();
-        HoaDonChiTiet hoaDonChiTiet = modelMapper.map(hoaDonChiTietDto, HoaDonChiTiet.class);
-        hoaDonChiTiet.setBienTheGiay(hoaDonChiTietDto.getBienTheGiay());
-        hoaDonChiTiet.setHoaDon(hoaDonChiTietDto.getHoaDon());
-
-        hoaDonChiTiet.setGia(bienTheGiayRepository.findByGiaBan(hoaDonChiTietDto.getBienTheGiay().getId()).multiply(BigDecimal.valueOf(hoaDonChiTietDto.getSoLuong())));
-        HoaDonChiTiet addHDCT = hoaDonChiTietRepository.save(hoaDonChiTiet);
-        HoaDonChiTietDto returnValue = modelMapper.map(addHDCT, HoaDonChiTietDto.class);
-        return ResponseEntity.ok(returnValue);
     }
 
     @Override

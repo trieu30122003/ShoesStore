@@ -19,6 +19,7 @@ public interface BienTheGiayRepository extends JpaRepository<BienTheGiay, Intege
 
     Page<BienTheGiay> findByGiay_Ten(String name, Pageable pageable);
 
+    @Query(value = "select bt.giaBan from BienTheGiay bt where bt.id = :id")
     BigDecimal findByGiaBan(int id);
 
     @Transactional
