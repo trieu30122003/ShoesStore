@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Date;
 
 
 @AllArgsConstructor
@@ -23,11 +22,11 @@ public class GioHang implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_gio_hang")
-    private long id;
+    private int id;
 
     @ManyToOne
-    @JoinColumn(name = "id_giay")
-    private Giay giay;
+    @JoinColumn(name = "id_bien_the_giay")
+    private BienTheGiay bienTheGiay;
 
     @ManyToOne
     @JoinColumn(name = "id_khach_hang")

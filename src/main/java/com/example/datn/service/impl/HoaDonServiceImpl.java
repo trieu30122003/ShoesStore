@@ -54,7 +54,7 @@ public class HoaDonServiceImpl implements HoaDonService {
         if (returnValue != null) {
             String to = hoaDonDto.getKhachHang()
                                  .getEmail();
-            String subject = "Hóa đơn " + hoaDonDto.getMa();
+            String subject = "Đơn hàng " + hoaDonDto.getMa();
             String text = "Dear " + hoaDonDto.getKhachHang()
                                              .getTen() + " chúng tôi sẽ gửi đơn hàng cho bạn vào ngày " + hoaDonDto.getNgayGiao() + " đến địa chỉ là: " + hoaDonDto.getDiaChi();
             emailService.sendEmail(to, subject, text);

@@ -8,5 +8,5 @@ import java.util.List;
 public interface HoaDonChiTietService {
     ResponseEntity<?> save(HoaDonChiTietDto hoaDonChiTietDto);
     List<HoaDonChiTietDto> getAllByHoaDon(int id);
-    HoaDonChiTietDto update(HoaDonChiTietDto hoaDonChiTietDto, int id);
+    ResponseEntity<?> update(HoaDonChiTietDto hoaDonChiTietDto, int id);
 }

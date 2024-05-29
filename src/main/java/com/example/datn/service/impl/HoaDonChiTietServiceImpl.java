@@ -71,8 +71,15 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
     }
 
     @Override
-    public HoaDonChiTietDto update(HoaDonChiTietDto hoaDonChiTietDto, int id) {
-        return null;
+    public ResponseEntity<?> update(HoaDonChiTietDto hoaDonChiTietDto, int id) {
+        if (hoaDonChiTietDto.getHoaDon().getTrangThai() >= 2){
+            return ResponseEntity.badRequest().body("Hết thời gian có thể sửa!!");
+        }
+        HoaDonChiTietDto returnValue = new HoaDonChiTietDto();
+//        hoaDonChiTietRepository.update(hoaDonChiTietDto, id);
+        HoaDonChiTiet hoaDonChiTiet = hoaDonChiTietRepository.findById(id).get();
+        BeanUtils.copyProperties(hoaDonChiTiet,returnValue);
+        return ResponseEntity.ok(returnValue);
     }
 
 }
