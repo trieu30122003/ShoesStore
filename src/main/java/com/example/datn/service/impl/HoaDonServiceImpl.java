@@ -42,6 +42,7 @@ public class HoaDonServiceImpl implements HoaDonService {
     @Override
     public HoaDonDto save(HoaDonDto hoaDonDto) {
 //        HoaDonChiTiet hoaDonChiTiet = hoaDonChiTietRepository.findByHoaDon_Id(hoaDonDto.getId());
+
         ModelMapper modelMapper = new ModelMapper();
         HoaDon hoaDon = modelMapper.map(hoaDonDto, HoaDon.class);
         hoaDon.setKhachHang(hoaDonDto.getKhachHang());

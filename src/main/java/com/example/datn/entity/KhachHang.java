@@ -62,4 +62,7 @@ public class KhachHang implements Serializable {
     @Column(name = "trang_thai", columnDefinition = " int default 0")
     private int trangThai;
 
+    @Column(name = "ma_dat_hang",nullable = false)
+    private int maDatHang;
+
 }

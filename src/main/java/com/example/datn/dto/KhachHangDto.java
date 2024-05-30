@@ -32,4 +32,5 @@ public class KhachHangDto {
 //    @Pattern(regexp = "/d")
     private String sdt;
     private int trangThai;
+    private int maDatHang;
 }

@@ -12,6 +12,7 @@ import java.sql.Date;
 
 @Repository
 public interface HoaDonRepository extends JpaRepository<HoaDon, Integer> {
+
     @Transactional
     @Modifying
     @Query(value = "update HoaDon h set h.trangThai = 1 where h.id = :id")

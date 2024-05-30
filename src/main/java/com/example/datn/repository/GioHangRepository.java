@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GioHangRepository extends JpaRepository<GioHang, Integer> {
-    Page<GioHang> findByBienTheGiay_TenGiay(String someField, Pageable pageable);
+//    Page<GioHang> findByBienTheGiay_TenGiay(String someField, Pageable pageable);
 }
