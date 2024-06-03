@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.util.List;
 
 @Repository
 public interface BienTheGiayRepository extends JpaRepository<BienTheGiay, Integer> {
@@ -46,4 +48,11 @@ public interface BienTheGiayRepository extends JpaRepository<BienTheGiay, Intege
 
     @Query(value = "select b from BienTheGiay b where b.mauSac.id = :#{#ms.id} and b.kichThuoc.id = :#{#kt.id} and b.giay = :#{#g.id}")
     BienTheGiay bienThe(MauSacDto ms, KichThuocDto kt, GiayDto g);
+
+    @Query(value = "select count(bt.id) from BienTheGiay bt where bt.create_date between :start and :end")
+    int productIn(Date start, Date end);
+
+    @Query(value = "select bt from BienTheGiay bt where bt.create_date between :start and :end")
+    List<BienTheGiay> listProductIn(Date start, Date end);
+
 }

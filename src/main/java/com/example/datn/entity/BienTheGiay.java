@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Date;
+
 @Entity
 @Getter
 @Setter
@@ -47,4 +49,7 @@ public class BienTheGiay implements Serializable {
     @ManyToOne()
     @JoinColumn(name = "id_giay")
     private Giay giay;
+
+    @Column(name = "create_date")
+    private Date create_date;
 }

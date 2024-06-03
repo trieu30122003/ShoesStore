@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 
 @Getter
 @Setter
@@ -34,5 +35,7 @@ public class BienTheGiayDto {
 
 //    @NotBlank(message = "Giay is not mandatory")
     private Giay giay;
+
+    private Date create_date;
 
 }

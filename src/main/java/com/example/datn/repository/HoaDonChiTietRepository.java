@@ -26,6 +26,14 @@ public interface HoaDonChiTietRepository extends JpaRepository<HoaDonChiTiet, In
     @Query(value = "select sum(hdct.gia) from HoaDonChiTiet hdct where hdct.hoaDon.ngayThanhToan between :tuNgay and :denNgay")
     BigDecimal sumGia(Date tuNgay, Date denNgay);
 
+    @Query(value = "select count(hdct) from HoaDonChiTiet hdct where hdct.hoaDon.trangThai = 4")
+    int check();
+
+    @Query(value = "select sum(hdct.soLuong) from HoaDonChiTiet hdct where hdct.hoaDon.ngayThanhToan between :start and :end")
+    int sumProductOut(Date start, Date end);
+
+    @Query(value = "select hdct from HoaDonChiTiet hdct where hdct.hoaDon.trangThai = 4 and hdct.hoaDon.ngayThanhToan between :start and :end")
+    List<HoaDonChiTiet> listProductOut(Date start, Date end);
 //    @Transactional
 //    @Modifying
 //    @Query(value = "update HoaDonChiTiet hdct set " +
