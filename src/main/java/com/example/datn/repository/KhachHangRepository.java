@@ -15,6 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 public interface KhachHangRepository extends JpaRepository<KhachHang, Integer> {
     KhachHang findByMa(String ma);
 
+    @Query(value = "select kh.maDatHang from KhachHang kh where kh.id = :id")
+    int findByMaDatHang(int id);
+
     @Transactional
     @Modifying
     @Query(value = "update KhachHang kh set " +
