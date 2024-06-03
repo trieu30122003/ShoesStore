@@ -23,7 +23,7 @@ public class KhachHang implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_khach_hang")
-    private long id;
+    private int id;
 //
 //    @Column(name = "email_verification_status")
 //    private boolean emailVerificationStatus;
